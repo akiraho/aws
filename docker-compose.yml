@@ -1,0 +1,42 @@
+version: '3'
+services:
+  php:
+    build: ./php
+    volumes:
+      - .:/home/awstests
+      - ./php:/var/www/html
+    ports:
+      - 10080:80
+    depends_on:
+      - logger
+      - db
+  db:
+    image: mariadb:10.3.4
+    volumes:
+      - .:/home/awstests
+      - awstests_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    depends_on:
+      - logger
+  pma:
+    image: phpmyadmin/phpmyadmin:4.7.7-1
+    environment:
+      - PMA_HOST=awstests_db_1
+    ports:
+      - 18080:80
+    depends_on:
+      - logger
+      - db
+  logger:
+    image: gliderlabs/logspout
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - awstests_logger:/mnt/routes
+    environment:
+      - PORT=58000
+volumes:
+  awstests_logger:
+    external: true
+  awstests_db:
+    external: true
