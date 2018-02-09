@@ -9,5 +9,5 @@ create table users (
 );
 
 insert into users values (1, 'username01', 'password01');
-insert into users values (1, 'username02', 'password02');
-insert into users values (1, 'username03', 'password03');
+insert into users values (2, 'username02', 'password02');
+insert into users values (3, 'username03', 'password03');
