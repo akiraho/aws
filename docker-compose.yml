@@ -4,6 +4,8 @@ services:
     build: ./aws
   php:
     build: ./php
+    environment:
+      - DB_HOST=awstests_db_1
     volumes:
       - .:/home/awstests
       - ./php:/var/www/html
@@ -18,7 +20,7 @@ services:
       - .:/home/awstests
       - awstests_db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=password
     depends_on:
       - logger
   pma:
