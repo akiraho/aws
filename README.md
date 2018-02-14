@@ -2,6 +2,8 @@
 
 This is an AWS CloudFormation Proof of Concept for a high availability, auto-scaled LAMP stack configuration.
 
+[AWS CloudFormation Template](aws.cloudformation/lamp.json)
+
 ## Network Topology & Security
 
 A Virtual Private Network (VPC) is created. Inside the VPC a public subnet and a private subnet are created for each Availability Zone. The public subnets are attached to an Internet Gateway while the private subnets are not.
