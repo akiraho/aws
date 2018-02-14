@@ -14,4 +14,4 @@ Three Security Groups are set up for application servers, database servers and t
 
 ## Auto Scaling Architecture
 
-An Elastic Load Balancer sits on top of the infrastructure and directs client requests to the underlying application server EC2 instances. An Auto Scaling Group controls the number of running application servers across Availability Zones. A Target Tracking Auto Scaling Policy is set up to maintain average CPU utilization to the required level. The Auto Scaling Group would then launch and teminate EC2 application server instances as needed to main that level.
+An Elastic Load Balancer sits on top of the infrastructure and directs client requests to the underlying application server EC2 instances. An Auto Scaling Group controls the number of running application servers across Availability Zones. A Target Tracking Auto Scaling Policy is set up to maintain average CPU utilization at the required level. The Auto Scaling Group would then launch and teminate EC2 application server instances as needed to main that level.
