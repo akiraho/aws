@@ -2,7 +2,7 @@
 
 This is an AWS CloudFormation Proof of Concept for a high availability, auto-scaled LAMP stack configuration.
 
-[AWS CloudFormation Template](aws.cloudformation/lamp.json)
+[AWS CloudFormation Template](cloudformation/lamp.json)
 
 ## Network Topology & Security
 
