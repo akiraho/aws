@@ -14,7 +14,7 @@
 
     "DBName": {
       "Default": "db",
-      "Description" : "MySQL database name",
+      "Description" : "Aurora database name",
       "Type": "String",
       "MinLength": "1",
       "MaxLength": "64",
@@ -25,7 +25,7 @@
     "DBUser": {
       "Default": "root",
       "NoEcho": "true",
-      "Description" : "Username for MySQL database access",
+      "Description" : "Username for Aurora database access",
       "Type": "String",
       "MinLength": "1",
       "MaxLength": "16",
@@ -36,7 +36,7 @@
     "DBPassword": {
       "Default": "password",
       "NoEcho": "true",
-      "Description" : "Password for MySQL database access",
+      "Description" : "Password for Aurora database access",
       "Type": "String",
       "MinLength": "8",
       "MaxLength": "41",
@@ -73,7 +73,7 @@
       "Description" : "Auto Scaling maximum number of server instances",
       "Type" : "Number",
       "MinValue": "1",
-      "Default" : "2",
+      "Default" : "4",
       "ConstraintDescription" : "must be at least 1."
     },
 
