@@ -687,6 +687,7 @@
                 "content" : { "Fn::Join" : ["", [
                   "CREATE DATABASE IF NOT EXISTS ", { "Ref" : "DBName" }, ";\n",
                   "GRANT ALL ON ", { "Ref" : "DBName" }, ".* TO '", { "Ref" : "DBUser" }, "'@localhost IDENTIFIED BY '", { "Ref" : "DBPassword" }, "';\n",
+                  "USE ", { "Ref" : "DBName" }, ";\n",
                   "CREATE TABLE IF NOT EXISTS users (username VARCHAR(32) NOT NULL, UNIQUE(username));\n",
                   "INSERT INTO users (username) SELECT * FROM (SELECT 'user01') AS tmp WHERE NOT EXISTS (SELECT username FROM users WHERE username='user01') LIMIT 1;\n",
                   "INSERT INTO users (username) SELECT * FROM (SELECT 'user02') AS tmp WHERE NOT EXISTS (SELECT username FROM users WHERE username='user02') LIMIT 1;\n",
@@ -727,8 +728,7 @@
 
             "commands" : {
               "01_create_database" : {
-                "command" : { "Fn::Join" : ["", ["mysql ", { "Ref" : "DBName" }, " -u '", { "Ref" : "DBUser" }, " --password='", { "Ref" : "DBPassword" }, "' -h '", { "Fn::GetAtt" : [ "DBCluster", "Endpoint.Address" ] }, "' < /tmp/setup.mysql"]]},
-                "test" : { "Fn::Join" : ["", ["$(mysql ", { "Ref" : "DBName" }, " -u '", { "Ref" : "DBUser" }, " --password='", { "Ref" : "DBPassword" }, "' -h '", { "Fn::GetAtt" : [ "DBCluster", "Endpoint.Address" ] }, "' >/dev/null 2>&1 </dev/null); (( $? != 0 ))"]]}
+                "command" : { "Fn::Join" : ["", ["mysql ", { "Ref" : "DBName" }, " -u '", { "Ref" : "DBUser" }, "' --password='", { "Ref" : "DBPassword" }, "' -h '", { "Fn::GetAtt" : [ "DBCluster", "Endpoint.Address" ] }, "' < /tmp/setup.mysql"]] }
               }
             },
 
